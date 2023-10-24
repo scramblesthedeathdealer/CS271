@@ -15,4 +15,9 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
+    Not(in=sel, out=selNot); // Calculate the inverted value of sel
+    And(a=a, b=selNot, out=aAndSelNot); // a AND (NOT sel)
+    And(a=b, b=sel, out=bAndSel); // b AND sel
+    Or(a=aAndSelNot, b=bAndSel, out=out); // (a AND (NOT sel)) OR (b AND sel)
+
 }
